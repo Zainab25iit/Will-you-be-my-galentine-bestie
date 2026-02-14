@@ -1,14 +1,14 @@
-index.html
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Will You Be Mine? 💖</title>
+    <title>Will You Be My Galentine Besite </title>
     <style>
         body {
-            background: pink;
+            background: linear-gradient(to bottom right, pink, #ffb6c1);
             text-align: center;
-            font-family: Arial;
+            font-family: Arial, sans-serif;
             margin-top: 100px;
+            overflow: hidden;
         }
 
         h1 {
@@ -23,6 +23,7 @@ index.html
             border-radius: 10px;
             border: none;
             cursor: pointer;
+            transition: 0.3s;
         }
 
         #yes {
@@ -30,40 +31,89 @@ index.html
             color: white;
         }
 
+        #yes:hover {
+            transform: scale(1.1);
+        }
+
         #no {
             background-color: black;
             color: white;
             position: relative;
         }
+
+        #msg {
+            margin-top: 30px;
+            font-size: 28px;
+            color: darkred;
+        }
+
+        #note {
+            font-size: 18px;
+            color: #800000;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
-<h1>Happy Galenties Day Ma Bestie</h1>
+<h1>Happy Galentines Day Ma Bestie 💕</h1>
 
-<button id="yes">Yes girl</button>
-<button id="no">No sorry</button>
+<button id="yes">Yes girl 💖</button>
+<button id="no">No sorry 😭</button>
 
 <h2 id="msg"></h2>
+<p id="note"></p>
 
 <script>
     const yesBtn = document.getElementById("yes");
     const noBtn = document.getElementById("no");
     const msg = document.getElementById("msg");
+    const note = document.getElementById("note");
 
     yesBtn.onclick = function() {
-        msg.innerHTML = "Yayyyy 💖 I Love You So Much Ma Bestie ";
+        msg.innerHTML = "Yayyyy 💖 I Love You So Much Ma Bestie!";
+        note.innerHTML =
+            "You are literally my safe place, my chaos partner, my crying shoulder and my biggest hype woman. Thank you for being my forever girl. I don't know what I'd do without you 😭💗 Happy Galentines Day my soulmate bestie!";
+
+        createHearts();
     }
 
     noBtn.onmouseover = function() {
-        const x = Math.random() * 500;
-        const y = Math.random() * 300;
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
         noBtn.style.position = "absolute";
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
+    }
+
+    function createHearts() {
+        for (let i = 0; i < 30; i++) {
+            let heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
     }
 </script>
 
 </body>
 </html>
-
